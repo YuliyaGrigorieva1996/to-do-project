@@ -1,0 +1,46 @@
+.todo-wrappper {
+    min-width: 640px;
+    border: 2px grey solid;
+    position: relative;
+    input {
+        width: 280px;
+        height: 28px;
+        border: 3px solid grey;
+    }
+    input:first-child {
+        margin-right: 10px;
+    }
+}
+.todo-wrappper:nth-child(2n+1) {
+    background-color: pink;
+    input {
+        background-color: aquamarine;
+    }
+}
+.todo-wrappper:nth-child(2n+2) {
+    background-color: aquamarine;
+    border-top: none;
+    input {
+        background-color: pink;
+    }
+}
+.todo-wrappper:nth-child(2n+3) {
+    border-top: none;
+}
+.btn-delete {
+    position: absolute;
+    right: 0em;
+    top: 0em;
+}
+.btn-edit {
+    position: absolute;
+    right: 3em;
+    top: 0em;
+}
+.btn-save {
+    position: absolute;
+    right: 0em;
+    top: -0.2em;
+
+}
+

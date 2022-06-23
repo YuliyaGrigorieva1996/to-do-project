@@ -1,0 +1,92 @@
+// .statistic-wrapper {
+//     h1 {
+//        color: rgb(0, 102, 128); 
+//     }
+//     ul {
+//         margin-top: 50px;
+//         list-style: none;
+//     }
+//     li:before {
+//         content: "✓";
+//         position: absolute;
+//         left: 0;       
+//     }
+//     li {
+//         font-size: 19px;
+//         position: relative;
+//         padding-left: 40px;
+//         color: rgb(0, 102, 128);
+//     }
+    
+    
+// }
+.statistic-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+        "first last"
+        "deleted edited"
+        "all all";
+    column-gap: 20px;
+    row-gap: 10px;
+    color: rgb(0, 102, 128);
+    margin-top: 20px;
+    
+}
+.first-date {
+    grid-area: first;
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+.last-date {
+    grid-area: last;
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+.deleted-todo {
+    grid-area: deleted;
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+.edited-todo {
+    grid-area: edited;
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+.all-todo {
+    grid-area: all;
+    place-self: center;
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+.statistic-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 200px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.statistic-item-count {
+    align-self: center;
+    font-size: 30px;
+    margin: auto;
+
+}
+.all-item {
+    align-content: flex-end;
+    width: 528px;
+    height: 200px;
+}
+.statistic-item-header {
+    padding-top: 10px;
+}
+.number {
+    font-size: 70px;
+}

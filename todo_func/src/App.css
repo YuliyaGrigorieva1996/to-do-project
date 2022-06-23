@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.app-wrapper {
+    display: grid;
+    justify-items: start;
+    grid-template-areas: 
+    "m t";  
+}
+.to-do-page {
+ grid-area: t;
+}
+.menu {
+grid-area: m;
+}

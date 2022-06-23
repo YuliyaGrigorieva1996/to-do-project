@@ -1,0 +1,10 @@
+.todo-list-wrapper {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  
+    height: 545px;
+    overflow-y: auto;
+} li {
+    list-style: none;
+}
