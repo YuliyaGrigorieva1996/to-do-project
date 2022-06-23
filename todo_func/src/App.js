@@ -16,15 +16,27 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem('todos'));
+    if (todos) {
+      setTodos(todos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos]);
+
+  useEffect(() => {
     if (todos[todos.length - 1]) {
       dispatch(actions.Last())
     }
-  })
+  });
+
   useEffect(() => {
-    if (todos[0] && todos.length === 1) {
+    if (todos[0]?.id === 1) {
       dispatch(actions.First())
-    }
-  }, todos[0])
+    } 
+  }, [todos[0]?.id])
 
   const createId = () => {
       setRandomId(randomId + 1);
