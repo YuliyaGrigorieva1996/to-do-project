@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import * as actions from './store/actions/statistic';
 import { useDispatch } from "react-redux";
@@ -10,67 +10,66 @@ import ToDoPage from './Components/ToDoPage/ToDoPage';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
-  const [randomId, setRandomId] = useState(1);
+  const [id, setId] = useState(0);
   const [inputName, setInputName] = useState('');
   const [inputDescription, setInputDescription] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem('todos'));
+    const savedId = JSON.parse(localStorage.getItem('id'));
     if (todos) {
       setTodos(todos);
+    }
+    if (savedId) {
+      setId(savedId);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos))
+    localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-  useEffect(() => {
-    if (todos[todos.length - 1]) {
-      dispatch(actions.Last())
-    }
-  });
-
-  useEffect(() => {
-    if (todos[0]?.id === 1) {
-      dispatch(actions.First())
-    } 
-  }, [todos[0]?.id])
-
   const createId = () => {
-      setRandomId(randomId + 1);
-      return randomId;
+    setId(id + 1);
+    localStorage.setItem('id', JSON.stringify(id));
   }
+  
   const addTodo = (event) => {
-      event.preventDefault();
-      setTodos([
-          ...todos,
-          {
-          name: inputName,
-          description: inputDescription,
-          id: createId(),
-      }])
-      setInputName('');
-      setInputDescription('');
-      dispatch(actions.Add());
-      
+    createId();
+    event.preventDefault();
+    setTodos([
+      ...todos,
+      {
+        name: inputName,
+        description: inputDescription,
+        id: id,
+      }
+    ])
+    setInputName('');
+    setInputDescription('');
+    dispatch(actions.Add());
+    if (todos.length === 0) {
+      dispatch(actions.First())
+    }
+    dispatch(actions.Last())
   }
+
   return (
     <div className='app-wrapper'>
       <Menu className="menu" />
-        <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="todo" element={<ToDoPage className="to-do-page"
-              addTodo={addTodo}
-              todos={todos}
-              setTodos={setTodos}
-              inputName={inputName}
-              setInputName={setInputName}
-              inputDescription={inputDescription} 
-              setInputDescription={setInputDescription} />} />
-            <Route path="statistic" element={<Statistic />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="todo" element={<ToDoPage className="to-do-page"
+          addTodo={addTodo}
+          todos={todos}
+          setTodos={setTodos}
+          inputName={inputName}
+          setInputName={setInputName}
+          inputDescription={inputDescription}
+          setInputDescription={setInputDescription} />} />
+        <Route path="statistic" element={<Statistic />} />
+      </Routes>
 
     </div>
   );
