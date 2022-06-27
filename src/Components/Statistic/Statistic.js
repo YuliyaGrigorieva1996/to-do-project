@@ -10,17 +10,6 @@ const Statistic = () => {
     const firstDate = useSelector(store => store.statistic.firstDate);
     const lastDate = useSelector(store => store.statistic.lastDate)
     return (
-        //     <div className="statistic-wrapper">
-        //     <h1>Statistic</h1>
-        //     <ul>
-        //         <li>Amount of all to do: {count};</li>
-        //         <li>Amount of edited to do: {edited};</li>
-        //         <li>Amount of deleted to do: {deleted};</li>
-        //         <li>Time and date of first to do: {firstDate ? firstDate : 'there is no tasks yet'};</li>
-        //         <li>Time and date of last to do: {lastDate ? lastDate : 'there is no tasks yet'}.</li>
-        //     </ul>
-
-        // </div>
         <div className="statistic-wrapper">
             <div className="first-date">
                 <div className="statistic-item-wrapper">
